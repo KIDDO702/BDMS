@@ -20,24 +20,24 @@
                         <div class="login-right-wrap">
                             <h1>Register</h1>
                             <p class="account-title" style="font-size: 17px;">Access Admin Dashboard</p>
-                            <form action="#" method="#">
+                            <form action="./inc/register.inc.php" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" placeholder="Name" name="name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username">
+                                    <input type="text" class="form-control" placeholder="Username" name="uid">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email or Phone">
+                                    <input type="text" class="form-control" placeholder="Email or Phone" name="contact">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Passwowrd">
+                                    <input type="password" class="form-control" placeholder="Passwowrd" name="pwd">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Passwowrd Repeat">
+                                    <input type="password" class="form-control" placeholder="Passwowrd Repeat" name="pwdRpt">
                                 </div>
                                 <div class="form-group d-grid">
-                                    <button class="btn btn-primary" type="button">Register</button>
+                                    <button class="btn btn-primary" type="submit" name="submit">Register</button>
                                 </div>
                             </form>
                             <!-- <div class="text-center forgotpass mb-2">
