@@ -1,32 +1,24 @@
 <?php 
-   session_start();
-   require './db.inc.php';
+    require_once 'dbh.inc.php';
 
-   if (isset($_POST['submit'])) {
-       
-       $name = $_POST['name'];
-       $uid = $_POST['uid'];
-       $contact = $_POST['contact'];
-       $pwd = $_POST['pwd'];
-       $pwdRpt = $_POST['pwdRpt'];
+    session_start();
+    
+    if (isset($_SESSION['client'])) {
+        header ('location: ../dashboard.php');
+    }
 
+    if (isset($_REQUEST['submit'])) {
 
-       if ($pwd === $pwdRpt) {
-           
-           $query = 'INSERT INTO client_reg (name, uid, contact, pwd) VALUES ("$name", "$uid", "$contact", "$pwd")';
-           $queryRun = mysqli_query($conn, $query);
+        // echo '<pre>';
+        //   print_r($_REQUEST);
+        // echo '</pre>';
+        $name = filter_var($_REQUEST['name'], FILTER_SANITIZE_STRING);
+        $username = filter_var($_REQUEST['uid'], FILTER_SANITIZE_STRING);
+        $email = filter_var($_REQUEST['email'], FILTER_SANITIZE_EMAIL);
+        $pwd = strip_tags($_REQUEST['pwd']);
+        $pwdRpt = strip_tags($_REQUEST['pwdRpt']);
 
-           if ($queryRun) {
-               $_SESSION['success'] = 'We are in :)';
-           }
-           else {
-               $_SESSION['status'] = 'Failed :(';
-               header('location: ../register.php');
-           }
-       }
-       else {
-           $_SESSION['status'] = 'Password do not match :(';
-           header('location: ../register.php?=pwdMismatch');
-       }
-       
-   } 
+        if (empty($name)) {
+            $errorMsg[0][] = 'name required';
+        }
+    }

@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if (strlen($_SESSION['id']) === 0) {
+    header('location: index.php');
+} else {
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,6 +115,12 @@
                                 </li>
                             </ul> -->
                         </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fas fa-right-from-bracket"></i>
+                                <span class="text-dark" style="margin-left: 10px;">Log Out</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -116,7 +131,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Welcome</h3>
+                            <?php echo "<h3 class='page-title'>" . $_SESSION['name'] . "</h3>"; ?>
                             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active"><a href="./dashboard.php" style="text-decoration: none;">Dashboard</a></li>
